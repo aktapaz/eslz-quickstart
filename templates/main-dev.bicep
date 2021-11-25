@@ -1,57 +1,17 @@
-//general
-//targetScope = 'managementGroup'
-targetScope = 'subscription'
-//param managementGroupIdentifier string
-param subscriptionId string
-
+targetScope  = 'managementGroup'
 //naming
-//param resourceType string
-//param nameMatch array
-//param description string
-//param policyName string
-
-
-//resourcegroup
-param resourceGroupName string
-param location string
-
-//storage
-param storageName string
-@allowed([
-  'Standard_LRS'
-  'Standard_GRS'
-])
-param sku string
-
-
+param managementGroupIdentifier string
+param initiativeName string          = 'Non-Prod-Naming'
+//allowed vm skus
+var policyDeployment          = '${assignmentName}-${guid(time)}'
+var assignmentName            = 'Allowed-VM-SKU'
+param time string             = utcNow('d')
 //modules
-//module name 'modules/policy-naming.bicep' = {
-  //scope: managementGroup(managementGroupIdentifier)
-  //name: policyName
-  //params: {
-    //description: description
-    //nameMatch: nameMatch
-    //policyName: policyName
-    //resourceType: resourceType
-  //}
-//}
-
-
-
-module rg 'modules/resource-group.bicep' = {
-  scope: subscription(subscriptionId)
-  name: resourceGroupName
-  params: {
-    location: location
-    resourceGroupName:resourceGroupName 
-  }
+module name 'initiative-dev-naming.bicep' = {
+  scope: managementGroup(managementGroupIdentifier)
+  name: initiativeName
 }
 
-module stg 'modules/storage.bicep' = {
-  scope: resourceGroup(subscriptionId,resourceGroupName)
-  name: storageName
-  params: {
-    sku: sku
-    storageName: storageName
-  }
+module vm 'policy-dev-vm-skus.bicep' = {
+  name: policyDeployment
 }

@@ -2,7 +2,7 @@ targetScope                   = 'managementGroup'
 param time string             = utcNow()
 param policyID string         = '/providers/Microsoft.Authorization/policyDefinitions/cccc23c7-8427-4f53-ad12-b6a63eb452b3'
 param description string      = 'Allowed Non-Prod virtual machine SKUs'
-param location string         = 'eastus'
+param location string         = 'westeurope'
 param nonCompliance string    = 'Select a SKU from the following: Standard_Bms'
 param skus array              = json(loadTextContent('parameters/allowed-vm-skus-dev.json'))
 

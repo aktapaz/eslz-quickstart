@@ -2,8 +2,8 @@ targetScope                   = 'managementGroup'
 param time string             = utcNow()
 param initiativeName string   = 'Allowed Regions'
 param assignmentName string   = 'Allowed-Regions'
-param location string         = 'eastus'
-param nonCompliance string    = 'Allowed Regions: East US, East US 2, West US, West US 2, Central US'
+param location string         = 'westeurope'
+param nonCompliance string    = 'Allowed Regions: westeurope, northeurope'
 param regions array           = json(loadTextContent('parameters/allowed-regions.json'))
 
 var policyDeployment          = '${assignmentName}-${guid(time)}'
