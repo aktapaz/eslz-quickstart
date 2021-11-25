@@ -1,6 +1,6 @@
 {
     "mode": "All",
-    "Description": "This policy requires tags on resource gruups except the list below",
+    "Description": "This policy requires tags on resource groups except the list below",
     "DisplayName": "Require tags on resource groups except for Azure services",
     "Name": "RequireRg-Tags",
     "policyRule": {

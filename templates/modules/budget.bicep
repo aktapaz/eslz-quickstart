@@ -1,6 +1,6 @@
 param appname string
 param budgetAmount int
-param start string = utcNow('yyyy-MM-dd')
+param start string = utcNow('dd-mm-yyyy')
 param contactEmail string
 param resourceGroup string
 
